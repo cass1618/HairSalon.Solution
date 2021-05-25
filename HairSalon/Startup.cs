@@ -25,12 +25,13 @@ namespace HairSalon
     {
       services.AddMvc();
       services.AddEntityFrameworkMySql()
-    .AddDbContext<BestRestaurantContext>(options => options
+    .AddDbContext<HairSalonContext>(options => options
     .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
     }
 
     public void Configure(IApplicationBuilder app)
     {
+      app.UseStaticFiles();
       app.UseDeveloperExceptionPage();
       app.UseRouting();
       app.UseEndpoints(routes =>
